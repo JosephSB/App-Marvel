@@ -1,6 +1,6 @@
 {
 	"mongo":{
-		"host": "localhost",
-		"database": "DBapiMarvel"
+		"host": "db",
+		"database": "dbMarvel"
 	}
 }
