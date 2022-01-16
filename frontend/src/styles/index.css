@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+button {
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.Responsive {
+  transform: translateX(0%) !important;
+}
