@@ -37,3 +37,6 @@ button {
 .Responsive {
   transform: translateX(0%) !important;
 }
+.Fav-Active {
+  color: firebrick;
+}

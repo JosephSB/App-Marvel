@@ -38,7 +38,7 @@ const CharacterDetail = () => {
         </figure>
 
         <BoxDetail>
-          <BtnFav />
+          <BtnFav CharacterID={id} />
           <BtnBack title="Regresar" />
           <Title>{data[0]?.name.toUpperCase()}</Title>
           <p>
