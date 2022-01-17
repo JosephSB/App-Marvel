@@ -1,9 +1,9 @@
 import { Btn, SpanText } from "./styles";
 import { Icon } from "../../../styles/globalStyles";
 
-const BtnLink = ({ onClick, icon, name }) => {
+const BtnLink = ({ route, icon, name }) => {
   return (
-    <Btn onClick={onClick}>
+    <Btn exact="true" to={route}>
       <Icon className={icon}></Icon>
       <SpanText>{name}</SpanText>
     </Btn>

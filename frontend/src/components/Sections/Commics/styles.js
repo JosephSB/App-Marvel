@@ -9,6 +9,7 @@ export const ContainerCommics = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const Title = styled.h2`

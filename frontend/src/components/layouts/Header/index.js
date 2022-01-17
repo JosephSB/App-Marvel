@@ -3,6 +3,7 @@ import BtnLink from "../../Buttons/BtnLink";
 import { Icon } from "../../../styles/globalStyles";
 import { useRef } from "react";
 import Logo from "../../Logo";
+import UsernameInHeader from "../../../Containers/UsernameInHeader";
 
 const Header = () => {
   const ref = useRef(null);
@@ -17,8 +18,8 @@ const Header = () => {
           <Icon className="fas fa-bars fa-2x" />
         </ContainerBarr>
         <Nav ref={ref}>
-          <BtnLink icon="fas fa-heart" name="Favs" />
-          <BtnLink icon="fas fa-user" name="Inciar sesion" />
+          <BtnLink route="/Favs" icon="fas fa-heart" name="Favs" />
+          <UsernameInHeader />
         </Nav>
       </Container>
     </Heade>

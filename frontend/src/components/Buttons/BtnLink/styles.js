@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import {
   BGCOLOR_SECONDARY,
   TEXTCOLOR_PRIMATY,
   BGCOLOR_HOVER,
 } from "../../../styles/variables";
 
-export const Btn = styled.div`
+export const Btn = styled(NavLink)`
   width: 200px;
   height: 60px;
+  text-decoration: none;
   border-radius: 6px;
   text-align: center;
   padding: 20px;
