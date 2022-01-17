@@ -17,16 +17,12 @@ FollowController.follow = (req, res) => {
 
         FollowModel.FindFollows(data)
           .then((results) => {
-            if (results.length >= 1)
-              res.json({
-                message: "El personaje ya tiene tu follow",
-                error: false,
-              });
+            if (results.length >= 1) return FollowModel.removeFollow(data);
             else return FollowModel.saveFollow(data);
           })
-          .then((operation) =>
+          .then((message) =>
             res.json({
-              message: "New Follow",
+              message: message,
               error: false,
             })
           )
@@ -41,34 +37,40 @@ FollowController.follow = (req, res) => {
   } else res.json({ message: "Enviaste datos incompletos", error: true });
 };
 
-FollowController.unfollow = (req, res) => {
-  if (Object.keys(req.params).length == 1) {
-    //verifico si el token existe
-    jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
-      if (error) {
-        res.json({ message: "NO ESTAS REGISTRADO", error: true });
-      } else {
-        const data = {
-          UserID: authData.user.ID,
-          CharacterID: req.params.CharacterID,
-        };
+FollowController.VefifyFollowInCharacter = (req, res) => {
+  jwt.verify(req.token, process.env.SECRET_KEY, (error, authData) => {
+    if (error) {
+      res.json({ message: "NO ESTAS REGISTRADO", error: true });
+    } else {
+      const data = {
+        UserID: authData.user.ID,
+        CharacterID: req.params.CharacterID,
+      };
 
-        FollowModel.removeFollow(data)
-          .then((operation) =>
+      FollowModel.FindFollows(data)
+        .then((results) => {
+          if (results.length === 0)
             res.json({
-              message: "Unfollow",
+              message: "Este personaje no es el favorito de este usuario",
               error: false,
-            })
-          )
-          .catch((err) =>
+              fav: false,
+            });
+          else {
             res.json({
-              message: "Ocurrio un error",
-              error: true,
-            })
-          );
-      }
-    });
-  } else res.json({ message: "Enviaste datos incompletos", error: true });
+              message: "Este personaje es favorito de este usuario",
+              error: false,
+              fav: true,
+            });
+          }
+        })
+        .catch((err) =>
+          res.json({
+            message: "Ocurrio un error",
+            error: true,
+          })
+        );
+    }
+  });
 };
 
 FollowController.getMyFollows = (req, res) => {

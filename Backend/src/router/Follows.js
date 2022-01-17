@@ -2,8 +2,12 @@ const express = require("express");
 const router = express.Router();
 const FollowController = require("../controller/FollowController");
 
-router.get("/follow/:CharacterID", verifyToken, FollowController.follow);
-router.get("/unfollow/:CharacterID", verifyToken, FollowController.unfollow);
+router.get("/changefollow/:CharacterID", verifyToken, FollowController.follow);
+router.get(
+  "/VefifyFollowInCharacter/:CharacterID",
+  verifyToken,
+  FollowController.VefifyFollowInCharacter
+);
 router.get("/getMyFollows", verifyToken, FollowController.getMyFollows);
 
 //funcion que verifica si mando un token y lo guarda en el req

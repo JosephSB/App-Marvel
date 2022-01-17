@@ -15,7 +15,7 @@ FollowModel.saveFollow = (data) => {
   return new Promise((resolve, reject) => {
     FollowSchema.create(data, (err) => {
       if (err) reject(err);
-      else resolve(true);
+      else resolve("Follow added");
     });
   });
 };
@@ -24,7 +24,7 @@ FollowModel.removeFollow = (data) => {
   return new Promise((resolve, reject) => {
     FollowSchema.remove(data, (err) => {
       if (err) reject(err);
-      else resolve(true);
+      else resolve("Follow removed");
     });
   });
 };
